@@ -9,12 +9,16 @@ class Profile():
         self.mode = mode
         self.int_preset = int_preset
 
-    def presetLoader(self):
+    def presetLoader(self): #   function to load the class tags in the preset file of choice
         try:
             filename = "PRESET_" + self.int_preset + ".cfg"
             conf = open("core/presets/" + filename, "r")
-            orders = conf.readlines()
+            conf_list = conf.readlines()
             conf.close()
+            orders = []
+
+            for item in conf_list:
+                orders.append(item.split("=")[1])
             return orders
         
         except OSError as error_msg:

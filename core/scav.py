@@ -31,8 +31,8 @@ def urlAccess(url_list):
         class_title = driver.find_elements(By.CLASS_NAME, page_elements[4]) #    locate the h3 tag of the headings and store in list
         
         for title in class_title:
-            post_title = title.find_element(By.TAG_NAME, "span") #  select the text in span in h3 tag
-            random_list.append(post_title)
+            post_title = title.find_element(By.TAG_NAME, "h3") #  select the text in span in h3 tag
+            random_list.append(post_title.text)
 
     driver.quit() #    quit browser
     return random_list
